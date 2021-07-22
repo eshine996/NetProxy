@@ -10,7 +10,7 @@ var Sql *gorm.DB
 var err error
 
 func init() {
-	if Sql, err = gorm.Open("sqlite3", "./edgeBox.sqlite"); err != nil {
+	if Sql, err = gorm.Open("sqlite3", "./netProxy.sqlite"); err != nil {
 		fmt.Println(err.Error())
 	}
 }
@@ -20,6 +20,7 @@ type BridgeInfo struct {
 	Vkey string `gorm:"column:vkey"`
 }
 
+//IsExist 验证数据是否存在
 func (b *BridgeInfo) IsExist() (bool, error) {
 	var i []BridgeInfo
 	ret := Sql.Where(b).Find(&i)

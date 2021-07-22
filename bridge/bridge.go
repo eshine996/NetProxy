@@ -98,6 +98,7 @@ func (b *Bridge) ping() {
 						t.retryTime++
 					}
 				}()
+
 				return true
 			})
 		}
