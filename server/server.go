@@ -6,7 +6,7 @@ import (
 
 func main() {
 	b := bridge.Bridge{
-		Port: 9024,
+		Port: 8012,
 	}
 	go b.Run() //开启网桥服务器
 

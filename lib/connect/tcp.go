@@ -41,6 +41,7 @@ func NewTCPListener(addr string) (*net.TCPListener, error) {
 func Accept(l net.Listener, f func(c Connect)) {
 	for {
 		c, err := l.Accept()
+
 		if err != nil {
 			if strings.Contains(err.Error(), "use of closed network connection") {
 				break
@@ -53,6 +54,7 @@ func Accept(l net.Listener, f func(c Connect)) {
 			fmt.Println(err.Error())
 			continue
 		}
+		fmt.Println(c.RemoteAddr().String(), "connect in")
 
 		if c == nil {
 			//logs.Warn("nil connection")

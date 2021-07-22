@@ -1,6 +1,7 @@
 package main
 
 import (
+	"NetProxy/lib/connect"
 	"fmt"
 	"net"
 	"time"
@@ -14,16 +15,18 @@ func main() {
 		return
 	}
 
+	c := connect.Connect{
+		Conn: conn,
+	}
+
 	//开启一个读消息协程
 	go func() {
 		for {
-			msg := make([]byte, 5)
-			_, err := conn.Read(msg)
+			msg, err := c.ReadMessage()
 			if err != nil {
 				fmt.Println(err.Error())
-				return
 			}
-			fmt.Println(string(msg))
+			fmt.Printf("%s:%s", msg.MsgType, msg.Content)
 		}
 	}()
 
