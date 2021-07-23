@@ -36,7 +36,7 @@ func (c *Connect) ReadMessage() (*Message, error) {
 	var msgType []byte
 
 	//设置读取超时，不能阻塞
-	if err = c.SetReadDeadline(time.Now().Add(5 * time.Second)); err != nil {
+	if err = c.SetReadDeadline(time.Now().Add(10 * time.Second)); err != nil {
 		return nil, myerr.New(err.Error())
 	}
 
@@ -61,7 +61,6 @@ func (c *Connect) ReadMessage() (*Message, error) {
 
 	msg := NewMessage(string(msgType), string(content))
 	return &msg, nil
-
 }
 
 //SendError 发送错误消息
