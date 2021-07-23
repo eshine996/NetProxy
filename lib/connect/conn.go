@@ -4,6 +4,7 @@ import (
 	"NetProxy/lib/crypt"
 	"NetProxy/lib/myerr"
 	"NetProxy/lib/tools"
+	"fmt"
 	"net"
 	"time"
 )
@@ -72,6 +73,7 @@ func (c *Connect) SendError(content string) (int, error) {
 //SendVkey 发送验证码
 func (c *Connect) SendVkey(vkeyStr string) (int, error) {
 	md5vkey := crypt.MD5(vkeyStr)
+	fmt.Println(md5vkey)
 	msg := NewMessage(MSGVKEY, md5vkey)
 	return c.Write(msg.ToBytes())
 }

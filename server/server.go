@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
+	//db.Sql.AutoMigrate(&db.BridgeInfo{})
 	b := bridge.Bridge{
 		Port: 8012,
 	}

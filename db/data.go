@@ -33,4 +33,4 @@ func (b *BridgeInfo) IsExist() (bool, error) {
 	return true, nil
 }
 
-//db.DB.AutoMigrate(&db.Device{})
+//db.DB.AutoMigrate(&db.BridgeInfo{})
